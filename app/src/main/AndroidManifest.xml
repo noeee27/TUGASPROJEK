@@ -36,6 +36,14 @@
             android:name=".PengambilanActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".RiwayatActivity"
+            android:exported="false"/>
+
+        <activity android:name=".ChatAdminActivity" />
+
+
+
     </application>
 
 </manifest>

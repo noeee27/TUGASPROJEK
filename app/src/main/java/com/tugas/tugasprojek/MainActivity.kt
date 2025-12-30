@@ -114,11 +114,13 @@ class MainActivity : AppCompatActivity() {
     private fun setupBottomNavigation() {
         binding.bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
+
                 R.id.nav_home -> {
                     filterBarang("")
                     binding.textRekomendasi.text = "Barang Rekomendasi"
                     true
                 }
+
                 R.id.nav_favorite -> {
                     filteredBarang.clear()
                     filteredBarang.addAll(dataBarang.filter { it.isFavorite })
@@ -126,14 +128,24 @@ class MainActivity : AppCompatActivity() {
                     binding.textRekomendasi.text = "Barang Favorit"
                     true
                 }
-                R.id.nav_profile -> {
-                    Toast.makeText(this, "Profil Pengguna", Toast.LENGTH_SHORT).show()
+
+                R.id.nav_riwayat -> {
+                    val intent = Intent(this, RiwayatActivity::class.java)
+                    startActivity(intent)
                     true
                 }
+
+                R.id.nav_chat -> {
+                    val intent = Intent(this, ChatAdminActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+
                 else -> false
             }
         }
     }
+
 
     private fun setupProfileCard() {
         binding.cardProfile.setOnClickListener {

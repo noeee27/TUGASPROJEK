@@ -54,7 +54,7 @@
                     android:id="@+id/tvEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="noeeniboss27@gmail.com"
+                    android:text="noeeanaksekolah27@gmail.com"
                     android:textColor="#666666"
                     android:textSize="12sp"/>
             </LinearLayout>

@@ -12,7 +12,7 @@
         android:theme="@style/Theme.TUGASPROJEK">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,10 +21,17 @@
         </activity>
 
         <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".PemesananActivity"
             android:exported="false" />
 
-        <!-- ✅ TAMBAHKAN INI -->
         <activity
             android:name=".PengambilanActivity"
             android:exported="false" />

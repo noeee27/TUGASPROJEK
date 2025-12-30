@@ -12,7 +12,7 @@ class BarangAdapter(
     private val list: List<Barang>,
     private val onItemClick: (Barang) -> Unit,
     private val onFavoriteClick: (Barang) -> Unit,
-    private val onPesanClick: (Barang) -> Unit   // 🔥 tambah untuk stok
+    private val onPesanClick: (Barang) -> Unit   //  tambah untuk stok
 ) : RecyclerView.Adapter<BarangAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

@@ -2,9 +2,9 @@ package com.tugas.tugasprojek
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.tugas.tugasprojek.databinding.ActivityPemesananBinding
 import java.text.NumberFormat
@@ -14,6 +14,7 @@ class PemesananActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPemesananBinding
     private val db = FirebaseFirestore.getInstance()
+    private val auth = FirebaseAuth.getInstance()
 
     private var barangId = ""
     private var hargaSatuan = 0
@@ -69,13 +70,20 @@ class PemesananActivity : AppCompatActivity() {
 
     private fun setupSimpanButton() {
         binding.btnSimpan.setOnClickListener {
+            val userId = auth.currentUser?.uid
+
+            if (userId == null) {
+                Toast.makeText(this, "Silakan login terlebih dahulu", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             binding.btnSimpan.isEnabled = false
-            prosesPesanan()
+            prosesPesanan(userId)
         }
     }
 
-    // 🔥 TRANSAKSI FIRESTORE AMAN
-    private fun prosesPesanan() {
+    // 🔥 TRANSAKSI + SIMPAN RIWAYAT
+    private fun prosesPesanan(userId: String) {
         val docRef = db.collection("barang").document(barangId)
 
         db.runTransaction { transaction ->
@@ -88,18 +96,34 @@ class PemesananActivity : AppCompatActivity() {
                 throw Exception("Stok tidak cukup")
             }
         }.addOnSuccessListener {
+
+            val pesanan = hashMapOf(
+                "userId" to userId,
+                "barangId" to barangId,
+                "namaBarang" to binding.tvNamaBarang.text.toString(),
+                "jumlah" to jumlah,
+                "hargaSatuan" to hargaSatuan,
+                "totalHarga" to jumlah * hargaSatuan,
+                "timestamp" to System.currentTimeMillis()
+            )
+
+            db.collection("riwayat_pesanan").add(pesanan)
+
             Toast.makeText(this, "Pesanan berhasil!", Toast.LENGTH_LONG).show()
 
             val intent = Intent(this, PengambilanActivity::class.java)
             intent.putExtra("nama", binding.tvNamaBarang.text.toString())
             intent.putExtra("jumlah", jumlah)
             intent.putExtra("total", jumlah * hargaSatuan)
-
             startActivity(intent)
             finish()
-        }
 
+        }.addOnFailureListener {
+            binding.btnSimpan.isEnabled = true
+            Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+        }
     }
+
     private fun formatRupiah(value: Int): String {
         val formatter = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
         return formatter.format(value)

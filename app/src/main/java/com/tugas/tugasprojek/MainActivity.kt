@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                 barangAdapter.notifyDataSetChanged()
             },
 
-            // 🔥 klik PESAN → PINDAH HALAMAN
+            //  klik PESAN → PINDAH HALAMAN
             onPesanClick = { barang ->
                 if (barang.stok <= 0) {
                     Toast.makeText(this, "Stok habis", Toast.LENGTH_SHORT).show()

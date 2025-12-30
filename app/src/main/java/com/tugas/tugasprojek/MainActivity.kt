@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         loadDataBarang()
     }
 
-    //  AAMBIL DATA BARANG DARI FIREBASE
+    //  AMBIL DATA BARANG DARI FIREBASE
     private fun loadDataBarang() {
         db.collection("barang")
             .get()

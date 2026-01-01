@@ -12,7 +12,7 @@ class BarangAdapter(
     private val list: List<Barang>,
     private val onItemClick: (Barang) -> Unit,
     private val onFavoriteClick: (Barang) -> Unit,
-    private val onPesanClick: (Barang) -> Unit   //  tambah untuk stok
+    private val onPesanClick: (Barang) -> Unit
 ) : RecyclerView.Adapter<BarangAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -21,7 +21,7 @@ class BarangAdapter(
         val rating: RatingBar = view.findViewById(R.id.ratingBar)
         val harga: TextView = view.findViewById(R.id.tvHarga)
         val favoriteIcon: ImageView = view.findViewById(R.id.imgFavorite)
-        val btnPesan: TextView = view.findViewById(R.id.btnPesan) // tombol pesan
+        val btnPesan: TextView = view.findViewById(R.id.btnPesan)
         val tvStok: TextView = view.findViewById(R.id.tvStok)
         val cardView: View = view.findViewById(R.id.cardBarang)
     }
@@ -43,7 +43,7 @@ class BarangAdapter(
         val context = holder.itemView.context
 
         val imageName = barang.gambar
-            .substringBefore(".")   // buang .jpg / .jpeg
+            .substringBefore(".")
             .lowercase()
 
         val imageResId = context.resources.getIdentifier(

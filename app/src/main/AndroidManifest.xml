@@ -11,6 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TUGASPROJEK">
 
+        <!-- GOOGLE MAPS API KEY -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBMVgG7I5iyGzAJBd4P0vuYWFsdG8PJxYk" />
+
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -40,9 +45,9 @@
             android:name=".RiwayatActivity"
             android:exported="false"/>
 
-        <activity android:name=".ChatAdminActivity" />
-
-
+        <activity
+            android:name=".ChatAdminActivity"
+            android:exported="false"/>
 
     </application>
 

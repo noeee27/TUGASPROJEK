@@ -44,41 +44,34 @@ android {
 }
 
 dependencies {
-    // Core
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
 
-    // UI
+
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
-    // RecyclerView (PENTING - Tambahkan ini)
+
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation(libs.firebase.database)
 
 
-    // View Binding sudah aktif via buildFeatures
-
-    // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    // Material Components (sudah ada di versi terbaru)
-    // implementation("com.google.android.material:material:1.12.0")
-
-    // Lifecycle (optional tapi recommended)
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.0")
 
-    // Coroutines (untuk async operations)
+
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
-    // CardView (untuk kompatibilitas)
+
     implementation("androidx.cardview:cardview:1.0.0")
 
-    // Navigation Component (optional untuk bottom nav)
+    
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
 
@@ -86,4 +79,7 @@ dependencies {
 
     implementation("com.google.firebase:firebase-firestore-ktx")
     implementation("com.google.firebase:firebase-auth-ktx")
+
+
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
 }

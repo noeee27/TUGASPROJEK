@@ -70,7 +70,7 @@ class PemesananActivity : AppCompatActivity() {
         }
     }
 
-    // ================= TANGGAL =================
+    //TANGGAL
 
     private fun setupTanggalPicker() {
         binding.tvTanggalPinjam.setOnClickListener {
@@ -112,14 +112,14 @@ class PemesananActivity : AppCompatActivity() {
         return sdf.format(ts.toDate())
     }
 
-    // ================= TOTAL =================
+    //TOTAL
 
     private fun updateTotal() {
         binding.tvJumlah.text = jumlah.toString()
         binding.tvTotalHarga.text = formatRupiah(jumlah * hargaSatuan)
     }
 
-    // ================= SIMPAN =================
+    //SIMPAN
 
     private fun setupSimpanButton() {
         binding.btnSimpan.setOnClickListener {
@@ -145,7 +145,7 @@ class PemesananActivity : AppCompatActivity() {
         }
     }
 
-    // ================= FIRESTORE =================
+    // FIRESTORE
 
     private fun prosesPesanan(userId: String) {
         val docRef = db.collection("barang").document(barangId)

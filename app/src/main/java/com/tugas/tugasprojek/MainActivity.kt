@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         loadDataBarang()
     }
 
-    //  AMBIL DATA BARANG DARI FIREBASE
+    //  Mengambil Data Barang Di sini
     private fun loadDataBarang() {
         db.collection("barang")
             .get()
@@ -62,13 +62,13 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             },
 
-            // klik favorite
+            // Tombol Favorit
             onFavoriteClick = { barang ->
                 barang.isFavorite = !barang.isFavorite
                 barangAdapter.notifyDataSetChanged()
             },
 
-            //  klik PESAN → PINDAH HALAMAN
+            //  Pesanan
             onPesanClick = { barang ->
                 if (barang.stok <= 0) {
                     Toast.makeText(this, "Stok habis", Toast.LENGTH_SHORT).show()
@@ -157,7 +157,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // 🔄 refresh stok setelah kembali dari pemesanan
+    // refresh stok setelah kembali dari pemesanan
     override fun onResume() {
         super.onResume()
         loadDataBarang()

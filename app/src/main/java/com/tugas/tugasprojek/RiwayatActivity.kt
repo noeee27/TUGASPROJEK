@@ -37,7 +37,6 @@ class RiwayatActivity : AppCompatActivity() {
 
         db.collection("riwayat_pesanan")
             .whereEqualTo("userId", userId)
-            // ❌ JANGAN orderBy dulu
             .get()
             .addOnSuccessListener { snapshot ->
 
